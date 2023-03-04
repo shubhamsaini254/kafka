@@ -1,0 +1,15 @@
+#Kafka Partition Reassignment  --generate json file
+#At the secton of my-topic place your topic name
+{"topics":[{"topic":"my-topic"}],
+"version":1
+}
+
+#Command for run this script is : 
+
+#bin/kafka-reassign-partitions.sh --bootstrap-server localhost:9092  --topics-to-move-json-file TopicsToMove.json --broker-list "2,3" --generate
+#Command Explain Below
+  #localhost:9092 - Broker port
+  #TopicsToMove.json - code given above save with this file name inside kafka dir and before bin dir
+  #--broker-list "2,3" - we want to move our partitions to broker id 2 and 3
+  #This command will generate another .json code and that is explained in suggestedChange.json file in this repository
+  #This is first command then use next command for partition re-assignment

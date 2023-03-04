@@ -1,0 +1,13 @@
+#This is suggested change file - Properties of brokers at the section of partion with replicas place your running broker id
+#Example - partition 0  broker will be set on replicas section 2,3 and so on for another
+#This will be use with --execute command while partition reassignment
+#This is without Log file, Original code will be generate with Log code
+{"version":1,"partitions":[{"topic":"my-topic","partition":0,"replicas":[2,3]},{"topic":"my-topic","partition":1,"replicas":[3,1]}]}
+
+
+#bin/kafka-reassign-partitions.sh --bootstrap-server localhost:9092 --reassignment-json-file suggestedChange.json --execute
+#Command Explain Below
+  #localhost:9092 - Broker port
+  #suggestedChange.json - code given above save with this file name inside kafka dir and before bin dir
+  #--broker-list "2,3" - we want to move our partitions to broker id 2 and 3
+  #This is second command for partition reassignment with another brokers
