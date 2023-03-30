@@ -18,3 +18,4 @@ WantedBy=multi-user.target
 # This file use to run zookeeper with systemctl start zookeeper
 # path of this file is /etc/systemd/system
 # Then command systemctl daemon-reload
+
