@@ -17,3 +17,4 @@ WantedBy=multi-user.target
 # This file use to run kafka with systemctl start kafka
 # path of this file is /etc/systemd/system
 # Then command systemctl daemon-reload
+
