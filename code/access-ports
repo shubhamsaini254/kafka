@@ -1,0 +1,10 @@
+#Monitoring Machine Ports
+
+ Zoonavigator - 7070 
+ Kafka-Manager - 9000 
+ Kafka-Monitor - 8000 
+ Graphana - 3000 
+ Prometheus - 9090 
+
+#Note: Kafka-Monitor is not accessible using website others is working
+#with Monitor-Machine PIP:ports
