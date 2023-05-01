@@ -5,6 +5,8 @@
  Kafka-Monitor - 8000 
  Graphana - 3000 
  Prometheus - 9090 
+ Jolokia - 8778/jolikia
+ 
 
 #Note: Kafka-Monitor is not accessible using website others is working
 #with Monitor-Machine PIP:ports
