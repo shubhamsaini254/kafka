@@ -10,4 +10,8 @@ kafka-assigner  -z $ZK_HOST --generate balance --types even
 # execute the assignment
 kafka-assigner  -z $ZK_HOST -e balance --types even
 
+#################---or use another command---###########
+
+kafka-assigner  -z $ZK_HOST --execute balance --types even
+
 # watch results in Kafka Manager
