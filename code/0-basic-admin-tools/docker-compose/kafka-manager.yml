@@ -6,6 +6,6 @@ services:
     ports:
       - "9000:9000"
     environment:
-      ZK_HOSTS: "172.31.9.21:2181"
+      ZK_HOSTS: "172.31.17.155:2181,172.31.38.114:2181,172.31.14.212:2181"
       APPLICATION_SECRET: "random-secret"
     command: -Dpidfile.path=/dev/null
