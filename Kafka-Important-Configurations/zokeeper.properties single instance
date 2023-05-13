@@ -1,0 +1,13 @@
+#Default-Configuration
+maxClientCnxns=0
+admin.enableServer=false
+#Custom-Configuration
+tickTime=2000
+initLimit=10
+syncLimit=5
+dataDir=/home/ubuntu/Data/zookeeper-1
+clientPort=2181
+4lw.commands.whitelist=*
+server.1=localhost:2788:3788
+server.2=localhost:2888:3888
+server.3=localhost:2988:3988
