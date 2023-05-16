@@ -1,9 +1,11 @@
 # source of code and full documentation is here:
 # https://kafka.apache.org/documentation/#dynamicbrokerconfigs
 
+# This is dynamic broker configs upgrade commands
+
 #Custom Changes - Export Kafka Host that broker will talk to
 
-KAFKA_HOST=172.31.33.33:9092
+export KAFKA_HOST="172.31.33.33:9092"
 
 # To alter the current broker configs for broker id 1 (for example, the number of log cleaner threads):
 bin/kafka-configs.sh --bootstrap-server $KAFKA_HOST --entity-type brokers --entity-name 1 --alter --add-config log.cleaner.threads=2
