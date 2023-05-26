@@ -4,7 +4,7 @@
 export SRVPASS=serversecret
 cd ssl
 
-keytool -genkey -keystore kafka.server.keystore.jks -validity 365 -storepass $SRVPASS -keypass $SRVPASS  -dname "CN=ec2-18-196-169-2.eu-central-1.compute.amazonaws.com" -storetype pkcs12
+keytool -genkey -keystore kafka.server.keystore.jks -validity 365 -storepass $SRVPASS -keypass $SRVPASS  -dname "CN=ec2-3-64-213-181.eu-central-1.compute.amazonaws.com" -storetype pkcs12
 #> ll
 
 keytool -list -v -keystore kafka.server.keystore.jks
@@ -60,5 +60,5 @@ sudo grep "EndPoint" /home/ubuntu/kafka/logs/server.log
 # Verify SSL config
 from your local computer
 ```
-openssl s_client -connect <<your-public-DNS>>:9093
+openssl s_client -connect ec2-3-64-213-181.eu-central-1.compute.amazonaws.com:9093
 ```
