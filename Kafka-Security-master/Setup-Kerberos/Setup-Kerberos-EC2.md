@@ -12,6 +12,10 @@
 ```
 sudo yum install -y krb5-server
 ```
+sudo nano /var/kerberos/krb5kdc/kdc.conf
+sudo nano /var/kerberos/krb5kdc/kadm5.acl
+sudo nano /etc/krb5.conf
+
 * copy *kdc.conf* to directory /var/kerberos/krb5kdc/
 * copy *kadm5.acl* to directory /var/kerberos/krb5kdc/
 * copy *krb5.conf* to directory /etc/
@@ -21,12 +25,20 @@ sudo yum install -y krb5-server
 export REALM="KAFKA.SECURE"
 export ADMINPW="this-is-unsecure"
 
+```
+## Create kerberos database
+
 sudo /usr/sbin/kdb5_util create -s -r KAFKA.SECURE -P this-is-unsecure
+
+## Create admin principle
+
 sudo kadmin.local -q "add_principal -pw this-is-unsecure admin/admin"
+
+## Restart Services
 
 sudo systemctl restart krb5kdc
 sudo systemctl restart kadmin
-```
+
 ## check services
 ```
 sudo systemctl status krb5kdc

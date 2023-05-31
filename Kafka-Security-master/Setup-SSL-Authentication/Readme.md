@@ -46,9 +46,16 @@ keytool -list -v -keystore kafka.client.keystore.jks
   * use [server.properties](./server.properties), the new property is *ssl.client.auth*
   * restart Kafka  
 
+# configure client-ssl-auth.properties (Local Machine/Clien Machine) Producer and consumer will use this file
+
+nano client-ssl-auth.properties
+
+
 # TEST
 use [client-ssl-auth.properties](./client-ssl-auth.properties) and execute console producer/-consumer
 ```
-~/kafka/bin/kafka-console-producer.sh --broker-list ec2-18-196-169-2.eu-central-1.compute.amazonaws.com:9093 --topic kafka-security-topic --producer.config ~/ssl/client-ssl-auth.properties
-~/kafka/bin/kafka-console-consumer.sh --bootstrap-server ec2-18-196-169-2.eu-central-1.compute.amazonaws.com:9093 --topic kafka-security-topic --consumer.config ~/ssl/client-ssl-auth.properties
+kafka/bin/kafka-console-producer.sh --broker-list ec2-3-64-213-181.eu-central-1.compute.amazonaws.com:9093 --topic kafka-security-topic --producer.config /home/sizh/kafka-security/ssl/client-ssl-auth.properties 
+
+
+kafka/bin/kafka-console-consumer.sh --bootstrap-server ec2-3-64-213-181.eu-central-1.compute.amazonaws.com:9093 --topic kafka-security-topic --consumer.config /home/sizh/kafka-security/ssl/client-ssl-auth.properties
 ```

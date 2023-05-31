@@ -23,13 +23,13 @@ ssl.truststore.password
 test using the console-consumer/-producer and the [client.properties](./client.properties)
 ### Producer
 ```
-~/kafka/bin/kafka-console-producer.sh --broker-list <<your-public-DNS>>:9093 --topic kafka-security-topic --producer.config ~/ssl/client.properties
+kafka/bin/kafka-console-producer.sh --broker-list ec2-3-64-213-181.eu-central-1.compute.amazonaws.com:9093 --topic kafka-security-topic --producer.config /home/sizh/kafka-security/ssl/client.properties
 
-~/kafka/bin/kafka-console-producer.sh --broker-list <<your-public-DNS>>:9093 --topic kafka-security-topic
+kafka/bin/kafka-console-producer.sh --broker-list ec2-3-64-213-181.eu-central-1.compute.amazonaws.com:9093 --topic kafka-security-topic
 
 
 ```
 ### Consumer
 ```
-~/kafka/bin/kafka-console-consumer.sh --bootstrap-server <<your-public-DNS>>:9093 --topic kafka-security-topic --consumer.config ~/ssl/client.properties
+kafka/bin/kafka-console-consumer.sh --bootstrap-server ec2-3-64-213-181.eu-central-1.compute.amazonaws.com:9093 --topic kafka-security-topic --consumer.config /home/sizh/kafka-security/ssl/client.properties
 ```
