@@ -5,7 +5,7 @@ sudo kadmin.local -q "add_principal -randkey reader@KAFKA.SECURE"
 sudo kadmin.local -q "add_principal -randkey writer@KAFKA.SECURE"
 sudo kadmin.local -q "add_principal -randkey admin@KAFKA.SECURE"
 
-sudo kadmin.local -q "add_principal -randkey kafka/<<KAFKA-SERVER-PUBLIC-DNS>>@KAFKA.SECURE"
+sudo kadmin.local -q "add_principal -randkey kafka/ec2-3-64-213-181.eu-central-1.compute.amazonaws.com@KAFKA.SECURE"
 ```
 ## create keytabs
 ```
@@ -13,7 +13,7 @@ sudo kadmin.local -q "add_principal -randkey kafka/<<KAFKA-SERVER-PUBLIC-DNS>>@K
 sudo kadmin.local -q "xst -kt /tmp/reader.user.keytab reader@KAFKA.SECURE"
 sudo kadmin.local -q "xst -kt /tmp/writer.user.keytab writer@KAFKA.SECURE"
 sudo kadmin.local -q "xst -kt /tmp/admin.user.keytab admin@KAFKA.SECURE"
-sudo kadmin.local -q "xst -kt /tmp/kafka.service.keytab kafka/<<KAFKA-SERVER-PUBLIC-DNS>>@KAFKA.SECURE"
+sudo kadmin.local -q "xst -kt /tmp/kafka.service.keytab kafka/ec2-3-64-213-181.eu-central-1.compute.amazonaws.com@KAFKA.SECURE"
 
 sudo chmod a+r /tmp/*.keytab
 ```
@@ -46,6 +46,6 @@ sudo vi /etc/krb5.conf
 ## replace content by krb5.conf template
 
 klist -kt /tmp/kafka.service.keytab
-kinit -kt /tmp/kafka.service.keytab kafka/<<KAFKA-SERVER-PUBLIC-DNS>>
+kinit -kt /tmp/kafka.service.keytab kafka/ec2-3-64-213-181.eu-central-1.compute.amazonaws.com
 klist
 ```
