@@ -62,8 +62,8 @@ kinit -kt /tmp/writer.user.keytab writer
 ```
 2.) start a console-consumer as user _reader_
 ```
-export KAFKA_OPTS="-Djava.security.auth.login.config=/tmp/kafka_client_jaas.conf"
-
+export KAFKA_OPTS="-Djava.security.auth.login.config=/home/sizh/kafka-security/kafka_client_jaas.conf"
+    
 kdestroy
 kinit -kt /tmp/reader.user.keytab reader
 
@@ -82,7 +82,7 @@ kinit -kt /tmp/reader.user.keytab reader
 ```
 4.) start the console-consumer again as user _reader_
 ```
-export KAFKA_OPTS="-Djava.security.auth.login.config=/tmp/kafka_client_jaas.conf"
+export KAFKA_OPTS="-Djava.security.auth.login.config=/home/sizh/kafka-security/kafka_client_jaas.conf"
 
 kdestroy
 kinit -kt /tmp/reader.user.keytab reader

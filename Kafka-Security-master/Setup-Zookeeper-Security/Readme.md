@@ -18,6 +18,10 @@ scp -i ~/kafka-security.pem centos@<<KERBEROS-SERVER-PUBLIC-DNS>>:/tmp/zookeeper
 
 scp -i ~/kafka-security.pem /tmp/zookeeper.service.keytab ubuntu@<<KAFKA-SERVER-PUBLIC-DNS>>:/tmp/
 ```
+### Kafka Machine (Grab Zookeeper Ticket)
+
+kinit -kt /home/ubuntu/keytab/zookeeper.service.keytab zookeeper/<<Kafka-Server-Internal-DNS>>
+
 ## extend Zookeeper configuration
 add Kerberos auth properties to config file _/home/ubuntu/kafka/config/zookeeper.properties_ . Use template [zookeeper.properties](./zookeeper.properties) to replace your server zookeeper configuration.
 
