@@ -13,3 +13,4 @@
   #--broker-list "2,3" - we want to move our partitions to broker id 2 and 3
   #This command will generate another .json code and that is explained in suggestedChange.json file in this repository
   #This is first command then use next command for partition re-assignment
+  #
