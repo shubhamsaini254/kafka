@@ -5,3 +5,8 @@ bin/kafka-storage.sh random-uuid
 bin/kafka-storage.sh format -t <enter uuid here> -c config/kraft/server.properties
 ### 4. Login into Kraft shell
 bin/kafka-metadata-shell.sh --snapshot /tmp/server-1/kraft-combined-logs/__cluster_metadata-0/00000000000000000000.log
+### 5. Check cluster status
+bin/kafka-metadata-quorum.sh --bootstrap-server 172.31.8.57:9092 describe --status
+### 6. Check replication staus
+bin/kafka-metadata-quorum.sh --bootstrap-server 172.31.8.57:9092 describe --replication
+### 7. 
