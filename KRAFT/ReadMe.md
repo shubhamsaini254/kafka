@@ -11,3 +11,5 @@ bin/kafka-metadata-shell.sh --snapshot /tmp/server-1/kraft-combined-logs/__clust
 bin/kafka-metadata-quorum.sh --bootstrap-server 172.31.8.57:9092 describe --status
 #### 7. Check replication staus
 bin/kafka-metadata-quorum.sh --bootstrap-server 172.31.8.57:9092 describe --replication
+#### 8. Debug Log Segment
+bin/kafka-dump-log.sh --cluster-metadata-decoder --files data/kraft-combined-logs/__cluster_metadata-0/00000000000000000000.log
