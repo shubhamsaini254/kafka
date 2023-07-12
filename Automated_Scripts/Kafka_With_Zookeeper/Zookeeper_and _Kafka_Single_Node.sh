@@ -3,8 +3,6 @@
 echo export EC2_PRIVATE_IP=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4) >> ~/.bashrc
 # Export Private IP to $EC2_PRIVATE_IP variable
 export EC2_PRIVATE_IP=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4)
-# This should reload ~/.bashrc, ~/.bash_aliases, etc. (below command stop the script so i used above command)
-#exec bash
 # Update Repository
 sudo apt-get update -y
 # Install jdk, net-tools and tree package
@@ -237,8 +235,11 @@ sudo systemctl enable zookeeper kafka
 # Start zookeeper
 sudo systemctl start zookeeper
 # Pause next command for 10 seconds
-/bin/sleep 10
+/bin/sleep 5
 # Start Kafka
 sudo systemctl start kafka
 # Check kafka and zookeeper status
 sudo systemctl status zookeeper kafka
+# This should reload ~/.bashrc, ~/.bash_aliases, etc. (I have used at last because after this command next commands will be stopped)
+#This will reload and add private IP of EC2 Instance from .bashrc file in $EC2_PRIVATE_IP variable
+exec bash
