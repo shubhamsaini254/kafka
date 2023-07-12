@@ -13,7 +13,7 @@ tar -xvf kafka_2.13-3.5.0.tgz
 # Delete Kafka binary
 rm kafka_2.13-3.5.0.tgz
 # Create soft link of kafka binaries to kafka
-ls -s kafka_2.13-3.5.0 kafka
+ln -s kafka_2.13-3.5.0 kafka
 # Create Data Directory
 mkdir /home/ubuntu/data
 # Create systemd file for zookeeper
