@@ -235,5 +235,7 @@ sudo systemctl enable zookeeper kafka
 sudo systemctl start zookeeper
 # Pause next command for 10 seconds
 /bin/sleep 10
+# Start Kafka
+sudo systemctl start kafka
 # Check kafka and zookeeper status
 sudo systemctl status zookeeper kafka
