@@ -1,9 +1,9 @@
-# Update Repository
-sudo apt-get update -y
 # Export Private IP to .bashrc File
 echo export EC2_PRIVATE_IP=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4) >> ~/.bashrc
 # Execute .bashrc File
-source ~/.bashrc
+source .bashrc
+# Update Repository
+sudo apt-get update -y
 # Install jdk, net-tools and tree package
 sudo apt-get install openjdk-8-jdk net-tools tree -y
 # Download Kafka Binaries - check url if not working
