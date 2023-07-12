@@ -1,5 +1,9 @@
 # Update Repository
 sudo apt-get update -y
+# Export Private IP to .bashrc File
+echo export EC2_PRIVATE_IP=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4) >> ~/.bashrc
+# Execute .bashrc File
+source ~/.bashrc
 # Install jdk, net-tools and tree package
 sudo apt-get install openjdk-8-jdk net-tools tree -y
 # Download Kafka Binaries - check url if not working
@@ -9,7 +13,7 @@ tar -xvf kafka_2.13-3.5.0.tgz
 # Delete Kafka binary
 rm kafka_2.13-3.5.0.tgz
 # Create soft link of kafka binaries to kafka
-ln -s kafka_2.13-3.5.0 kafka
+ls -s kafka_2.13-3.5.0 kafka
 # Create Data Directory
 mkdir /home/ubuntu/data
 # Create systemd file for zookeeper
@@ -50,10 +54,6 @@ SuccessExitStatus=143
 [Install]
 WantedBy=multi-user.target
 EOF
-# Export Private IP to .bashrc File
-echo export EC2_PRIVATE_IP=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4) >> ~/.bashrc
-# Execute .bashrc File
-source ~/.bashrc
 # Delete zookeeper.properties and server.properties
 sudo rm /home/ubuntu/kafka/config/zookeeper.properties
 sudo rm /home/ubuntu/kafka/config/server.properties
