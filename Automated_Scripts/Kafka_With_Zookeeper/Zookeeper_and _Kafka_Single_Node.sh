@@ -230,7 +230,7 @@ EOF
 # Restart Daemon-Services
 sudo systemctl daemon-reload
 # Enable zookeeper and kafka service files
-sudo enable zookeeper kafka
+sudo systemctl enable zookeeper kafka
 # Start zookeeper
 sudo systemctl start zookeeper
 # Pause next command for 10 seconds
