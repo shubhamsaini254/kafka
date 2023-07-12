@@ -1,8 +1,10 @@
 #!/usr/bin/bash
 # Export Private IP to .bashrc File
 echo export EC2_PRIVATE_IP=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4) >> ~/.bashrc
-# This should reload ~/.bashrc, ~/.bash_aliases, etc.
-exec bash
+# Export Private IP to $EC2_PRIVATE_IP variable
+export EC2_PRIVATE_IP=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4)
+# This should reload ~/.bashrc, ~/.bash_aliases, etc. (below command stop the script so i used above command)
+#exec bash
 # Update Repository
 sudo apt-get update -y
 # Install jdk, net-tools and tree package
