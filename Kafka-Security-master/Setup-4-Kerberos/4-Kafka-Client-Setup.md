@@ -20,7 +20,7 @@ kinit -kt /home/sizh/kafka-security/keytab/admin.user.keytab admin
 ```
 2nd terminal:
 ```
-export KAFKA_OPTS="-Djava.security.auth.login.config=/tmp/kafka_client_jaas.conf"
+export KAFKA_OPTS="-Djava.security.auth.login.config=/home/sizh/kafka-security/kafka_client_jaas.conf"
 
 kinit -kt /tmp/reader.user.keytab reader
 

@@ -12,13 +12,13 @@
 ```
 sudo yum install -y krb5-server
 ```
-sudo nano /var/kerberos/krb5kdc/kdc.conf
-sudo nano /var/kerberos/krb5kdc/kadm5.acl
-sudo nano /etc/krb5.conf
+sudo nano /var/kerberos/krb5kdc/kdc.conf  [](./kdc.conf)
+sudo nano /var/kerberos/krb5kdc/kadm5.acl [](./kadm5.acl)
+sudo nano /etc/krb5.conf                  [](./krb5.conf)
 
-* copy *kdc.conf* to directory /var/kerberos/krb5kdc/
-* copy *kadm5.acl* to directory /var/kerberos/krb5kdc/
-* copy *krb5.conf* to directory /etc/
+* copy *kdc.conf* to directory /var/kerberos/krb5kdc/ [kdc.conf file >>](./kdc.conf)
+* copy *kadm5.acl* to directory /var/kerberos/krb5kdc/ [kadm5.acl file >>](./kadm5.acl)
+* copy *krb5.conf* to directory /etc/ [krb5.conf_file_>>](./krb5.conf)
 
 ## prepare Kerberos environment
 ```
