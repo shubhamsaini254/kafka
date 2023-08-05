@@ -1,0 +1,16 @@
+[Unit]
+Description=Node Exporter
+After=network.target
+
+[Service]
+#User=node_exporter
+#Group=node_exporter
+Type=simple
+ExecStart=/home/ubuntu/node-exporter/node_exporter
+
+[Install]
+WantedBy=multi-user.target
+
+#This file is for node-exporter metrics for prometheus
+#MONITORING LINUX HOST METRICS WITH THE NODE EXPORTER
+# visit for information - https://prometheus.io/docs/guides/node-exporter/
