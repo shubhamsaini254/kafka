@@ -1,0 +1,25 @@
+global:
+ scrape_interval: 10s
+ evaluation_interval: 10s
+scrape_configs:
+ - job_name: 'kafka'
+   static_configs:
+    - targets:
+      - 172.31.45.209:8080   # Kafka 1 - change IP for your use case
+      - 172.31.46.32:8080  # Kafka 2
+      - 172.31.35.155:8080  # Kafka 3
+ - job_name: 'zookeeper'
+   static_configs:
+    - targets:
+      - 172.31.36.152:8080
+      - 172.31.47.167:8080
+      - 172.31.46.19:8080   # zookeeer IP and Assign port on enviromnet section of systemd file
+ - job_name: 'node'
+   static_configs:
+    - targets: 
+      - 172.31.36.152:9100 # Zookeeper node 1
+      - 172.31.47.167:9100 # Zookeeper node 2
+      - 172.31.46.19:9100 # Zookeeper node 3
+      - 172.31.45.209:9100 # Kafka node 1
+      - 172.31.46.32:9100 # Kafka node 2
+      - 172.31.35.155:9100 # Kafka node 3
