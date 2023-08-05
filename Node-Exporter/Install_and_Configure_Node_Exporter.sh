@@ -9,7 +9,11 @@ rm -r node_exporter-1.6.1.linux-amd64.tar.gz
 # Create soft link for binary file's directory
 ln -s node_exporter-1.6.1.linux-amd64/ node-exporter
 # Create systemd file for node exporter
-sudo nano /etc/systemd/system/node-exporter.service
+sudo nano /etc/systemd/system/node-exporter.service [](./node-exporter.service)
+# Reload daemon service
+sudo systemctl daemon-reload
+# Start node-exporter
+sudo systemctl start node-exporter
 
 # Test and get metrics on local system
 curl localhost:9100/metrics
