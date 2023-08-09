@@ -1,0 +1,16 @@
+[Unit]
+Description=Kafka
+After=network.target
+
+[Service]
+# User=ec2-user
+# Group=ec2-user
+Type=simple
+Environment="KAFKA_OPTS=-Djava.security.auth.login.config=/home/ubuntu/kafka/config/kafka_server_jaas.conf -javaagent:/home/ubuntu/prometheus/jmx_prometheus_javaagent-0.3.1.jar=8080:/home/ubuntu/prometheus/kafka-0-8-2.yml"
+Environment="KAFKA_HEAP_OPTS=-Xmx256M -Xms128M"
+ExecStart=/home/ubuntu/kafka/bin/kafka-server-start.sh /home/ubuntu/kafka/config/server.properties
+ExecStop=/home/ubuntu/kafka/bin/kafka-server-stop.sh
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
