@@ -1,4 +1,4 @@
-# Setup Kerberos
+# Setup Kerberos - Need elastic IP for long term period
 
 ## Infrastructure preparation
 * launch a new t2.micro EC2 instance

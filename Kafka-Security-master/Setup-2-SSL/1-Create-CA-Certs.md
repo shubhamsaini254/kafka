@@ -11,7 +11,6 @@ cat ca-key
 keytool -printcert -v -file ca-cert
 ```
 
-
 ### Add-On: public certificates check
 ```
 echo |

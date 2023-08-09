@@ -33,7 +33,7 @@ sudo chmod 600 /tmp/*.keytab
 ## TEST, from local computer
 ```
 export DEBIAN_FRONTEND=noninteractive && sudo apt-get install -y krb5-user
-sudo vi /etc/krb5.conf
+sudo nano /etc/krb5.conf
 ## replace content by krb5.conf template
 
 kinit -kt /tmp/admin.user.keytab admin
@@ -42,10 +42,16 @@ klist
 ## TEST, from Kafka EC2
 ```
 export DEBIAN_FRONTEND=noninteractive ; sudo apt-get install -y krb5-user
-sudo vi /etc/krb5.conf
+sudo nano /etc/krb5.conf
 ## replace content by krb5.conf template
 
 klist -kt /tmp/kafka.service.keytab
 kinit -kt /tmp/kafka.service.keytab kafka/ec2-3-64-213-181.eu-central-1.compute.amazonaws.com
 klist
 ```
+## Content of the keytab file -This will show lots of duplicate entry but this is different types of encrytion while creating keytab file
+
+klist -kt kafka.service.keytab
+
+
+``
