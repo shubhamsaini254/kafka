@@ -1,76 +1,77 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "Prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "5.2.1"
+    },
+    {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph",
+      "version": "5.0.0"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "5.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "singlestat",
+      "name": "Singlestat",
+      "version": "5.0.0"
+    }
+  ],
   "annotations": {
     "list": [
       {
         "builtIn": 1,
-        "datasource": {
-          "type": "datasource",
-          "uid": "grafana"
-        },
+        "datasource": "-- Grafana --",
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
-        "target": {
-          "limit": 100,
-          "matchAny": false,
-          "tags": [],
-          "type": "dashboard"
-        },
         "type": "dashboard"
       }
     ]
   },
   "description": "Kafka resource usage and throughput",
   "editable": true,
-  "fiscalYearStartMonth": 0,
   "gnetId": 721,
   "graphTooltip": 0,
-  "id": 1,
+  "id": null,
   "links": [],
-  "liveNow": false,
   "panels": [
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "xTj2X4Q4k"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#bf1b00",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
-              },
-              {
-                "color": "#629e51",
-                "value": 2
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "#bf1b00",
+        "rgba(237, 129, 40, 0.89)",
+        "#629e51"
+      ],
+      "datasource": "${DS_PROMETHEUS}",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
       },
       "gridPos": {
         "h": 3,
@@ -79,78 +80,78 @@
         "y": 0
       },
       "id": 11,
+      "interval": null,
       "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
         },
-        "textMode": "auto"
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
       },
-      "pluginVersion": "9.3.0-beta1",
+      "tableColumn": "",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "xTj2X4Q4k"
-          },
           "expr": "count(kafka_server_replicamanager_leadercount)",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
         }
       ],
+      "thresholds": "0,2",
       "title": "Brokers Online",
-      "type": "stat"
+      "type": "singlestat",
+      "valueFontSize": "200%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "xTj2X4Q4k"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "#e5ac0e",
-                "value": 2
-              },
-              {
-                "color": "#d44a3a"
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "#299c46",
+        "#e5ac0e",
+        "#d44a3a"
+      ],
+      "datasource": "${DS_PROMETHEUS}",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
       },
       "gridPos": {
         "h": 3,
@@ -159,79 +160,78 @@
         "y": 0
       },
       "id": 13,
+      "interval": null,
       "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
         },
-        "textMode": "auto"
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
       },
-      "pluginVersion": "9.3.0-beta1",
+      "tableColumn": "",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "xTj2X4Q4k"
-          },
           "expr": "sum(kafka_controller_kafkacontroller_activecontrollercount)",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
         }
       ],
+      "thresholds": "2",
       "title": "Active Controller",
-      "type": "stat"
+      "type": "singlestat",
+      "valueFontSize": "200%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "xTj2X4Q4k"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#bf1b00",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
-              },
-              {
-                "color": "#629e51",
-                "value": 2
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "#bf1b00",
+        "rgba(237, 129, 40, 0.89)",
+        "#629e51"
+      ],
+      "datasource": "${DS_PROMETHEUS}",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
       },
       "gridPos": {
         "h": 3,
@@ -240,79 +240,78 @@
         "y": 0
       },
       "id": 18,
+      "interval": null,
       "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
         },
-        "textMode": "auto"
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
       },
-      "pluginVersion": "9.3.0-beta1",
+      "tableColumn": "",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "xTj2X4Q4k"
-          },
           "expr": "sum(kafka_controller_kafkacontroller_globaltopiccount)",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
         }
       ],
+      "thresholds": "0,2",
       "title": "Topic Count",
-      "type": "stat"
+      "type": "singlestat",
+      "valueFontSize": "200%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "xTj2X4Q4k"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#bf1b00",
-                "value": null
-              },
-              {
-                "color": "#e5ac0e",
-                "value": 0
-              },
-              {
-                "color": "#629e51",
-                "value": 0
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "#bf1b00",
+        "#e5ac0e",
+        "#629e51"
+      ],
+      "datasource": "${DS_PROMETHEUS}",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
       },
       "gridPos": {
         "h": 3,
@@ -321,79 +320,78 @@
         "y": 0
       },
       "id": 15,
+      "interval": null,
       "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
         },
-        "textMode": "auto"
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
       },
-      "pluginVersion": "9.3.0-beta1",
+      "tableColumn": "",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "xTj2X4Q4k"
-          },
           "expr": "sum(kafka_server_replicamanager_partitioncount)",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
         }
       ],
+      "thresholds": "0,0",
       "title": "Online Partitions",
-      "type": "stat"
+      "type": "singlestat",
+      "valueFontSize": "200%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "xTj2X4Q4k"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#508642",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
-              },
-              {
-                "color": "#bf1b00",
-                "value": 2
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "#508642",
+        "rgba(237, 129, 40, 0.89)",
+        "#bf1b00"
+      ],
+      "datasource": "${DS_PROMETHEUS}",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
       },
       "gridPos": {
         "h": 3,
@@ -402,79 +400,78 @@
         "y": 0
       },
       "id": 16,
+      "interval": null,
       "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
         },
-        "textMode": "auto"
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
       },
-      "pluginVersion": "9.3.0-beta1",
+      "tableColumn": "",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "xTj2X4Q4k"
-          },
           "expr": "sum(kafka_server_replicamanager_underreplicatedpartitions)",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
         }
       ],
+      "thresholds": "0,2",
       "title": "Under Replicated Partitions",
-      "type": "stat"
+      "type": "singlestat",
+      "valueFontSize": "200%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "xTj2X4Q4k"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#508642",
-                "value": null
-              },
-              {
-                "color": "#ef843c",
-                "value": 1
-              },
-              {
-                "color": "#bf1b00",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "#508642",
+        "#ef843c",
+        "#bf1b00"
+      ],
+      "datasource": "${DS_PROMETHEUS}",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
       },
       "gridPos": {
         "h": 3,
@@ -483,78 +480,78 @@
         "y": 0
       },
       "id": 17,
+      "interval": null,
       "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
         },
-        "textMode": "auto"
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
       },
-      "pluginVersion": "9.3.0-beta1",
+      "tableColumn": "",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "xTj2X4Q4k"
-          },
           "expr": "sum(kafka_controller_kafkacontroller_offlinepartitionscount)",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
         }
       ],
+      "thresholds": "1,1",
       "title": "Offline Partitions Count",
-      "type": "stat"
+      "type": "singlestat",
+      "valueFontSize": "200%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "xTj2X4Q4k"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "#e5ac0e",
-                "value": 2
-              },
-              {
-                "color": "#d44a3a"
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "#299c46",
+        "#e5ac0e",
+        "#d44a3a"
+      ],
+      "datasource": "${DS_PROMETHEUS}",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
       },
       "gridPos": {
         "h": 3,
@@ -563,118 +560,140 @@
         "y": 0
       },
       "id": 14,
+      "interval": null,
       "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
         },
-        "textMode": "auto"
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
       },
-      "pluginVersion": "9.3.0-beta1",
+      "tableColumn": "",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "xTj2X4Q4k"
-          },
           "expr": "sum(kafka_controller_controllerstats_uncleanleaderelectionspersec)",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
         }
       ],
+      "thresholds": "2",
       "title": "Unclean Leader Election Rate",
-      "type": "stat"
+      "type": "singlestat",
+      "valueFontSize": "200%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "xTj2X4Q4k"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#bf1b00",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
-              },
-              {
-                "color": "#629e51",
-                "value": 2
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "#bf1b00",
+        "rgba(237, 129, 40, 0.89)",
+        "#629e51"
+      ],
+      "datasource": "${DS_PROMETHEUS}",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
       },
       "gridPos": {
         "h": 3,
-        "w": 8,
+        "w": 3,
         "x": 0,
         "y": 3
       },
       "id": 19,
+      "interval": null,
       "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
         },
-        "textMode": "auto"
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
       },
-      "pluginVersion": "9.3.0-beta1",
+      "tableColumn": "",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "xTj2X4Q4k"
-          },
           "expr": "count(zookeeper_QuorumSize)",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
         }
       ],
+      "thresholds": "0,2",
       "title": "Zookeeper Online",
-      "type": "stat"
+      "type": "singlestat",
+      "valueFontSize": "200%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
     },
     {
       "aliasColors": {
@@ -683,14 +702,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "xTj2X4Q4k"
-      },
+      "datasource": "${DS_PROMETHEUS}",
       "editable": true,
       "error": false,
       "fill": 1,
-      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -698,7 +713,6 @@
         "x": 8,
         "y": 3
       },
-      "hiddenSeries": false,
       "id": 2,
       "isNew": true,
       "legend": {
@@ -714,11 +728,7 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
       "percentage": false,
-      "pluginVersion": "9.3.0-beta1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -728,10 +738,6 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "xTj2X4Q4k"
-          },
           "expr": "sum without(area)(jvm_memory_bytes_used{job=\"kafka\"})",
           "intervalFactor": 2,
           "legendFormat": "{{instance}}",
@@ -741,7 +747,8 @@
         }
       ],
       "thresholds": [],
-      "timeRegions": [],
+      "timeFrom": null,
+      "timeShift": null,
       "title": "JVM Memory Used",
       "tooltip": {
         "msResolution": false,
@@ -751,7 +758,9 @@
       },
       "type": "graph",
       "xaxis": {
+        "buckets": null,
         "mode": "time",
+        "name": null,
         "show": true,
         "values": []
       },
@@ -760,16 +769,22 @@
           "format": "bytes",
           "label": "Memory",
           "logBase": 1,
+          "max": null,
+          "min": null,
           "show": true
         },
         {
           "format": "short",
+          "label": null,
           "logBase": 1,
+          "max": null,
+          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false
+        "align": false,
+        "alignLevel": null
       }
     },
     {
@@ -779,14 +794,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "xTj2X4Q4k"
-      },
+      "datasource": "${DS_PROMETHEUS}",
       "editable": true,
       "error": false,
       "fill": 1,
-      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -794,7 +805,6 @@
         "x": 16,
         "y": 3
       },
-      "hiddenSeries": false,
       "id": 3,
       "isNew": true,
       "legend": {
@@ -810,11 +820,7 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
       "percentage": false,
-      "pluginVersion": "9.3.0-beta1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -824,10 +830,6 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "xTj2X4Q4k"
-          },
           "expr": "sum without(gc)(rate(jvm_gc_collection_seconds_sum{job=\"kafka\"}[5m]))",
           "intervalFactor": 2,
           "legendFormat": "{{instance}}",
@@ -837,7 +839,8 @@
         }
       ],
       "thresholds": [],
-      "timeRegions": [],
+      "timeFrom": null,
+      "timeShift": null,
       "title": "Time spent in GC",
       "tooltip": {
         "msResolution": false,
@@ -847,7 +850,9 @@
       },
       "type": "graph",
       "xaxis": {
+        "buckets": null,
         "mode": "time",
+        "name": null,
         "show": true,
         "values": []
       },
@@ -856,16 +861,22 @@
           "format": "percentunit",
           "label": "% time in GC",
           "logBase": 1,
+          "max": null,
+          "min": null,
           "show": true
         },
         {
           "format": "short",
+          "label": null,
           "logBase": 1,
+          "max": null,
+          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false
+        "align": false,
+        "alignLevel": null
       }
     },
     {
@@ -875,14 +886,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "xTj2X4Q4k"
-      },
+      "datasource": "${DS_PROMETHEUS}",
       "editable": true,
       "error": false,
       "fill": 1,
-      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -890,7 +897,6 @@
         "x": 0,
         "y": 6
       },
-      "hiddenSeries": false,
       "id": 1,
       "isNew": true,
       "legend": {
@@ -906,11 +912,7 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
       "percentage": false,
-      "pluginVersion": "9.3.0-beta1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -920,10 +922,6 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "xTj2X4Q4k"
-          },
           "expr": "rate(process_cpu_seconds_total{job=\"kafka\"}[1m])",
           "intervalFactor": 2,
           "legendFormat": "{{instance}}",
@@ -933,7 +931,8 @@
         }
       ],
       "thresholds": [],
-      "timeRegions": [],
+      "timeFrom": null,
+      "timeShift": null,
       "title": "CPU Usage",
       "tooltip": {
         "msResolution": false,
@@ -943,7 +942,9 @@
       },
       "type": "graph",
       "xaxis": {
+        "buckets": null,
         "mode": "time",
+        "name": null,
         "show": true,
         "values": []
       },
@@ -952,16 +953,22 @@
           "format": "short",
           "label": "Cores",
           "logBase": 1,
+          "max": null,
+          "min": null,
           "show": true
         },
         {
           "format": "short",
+          "label": null,
           "logBase": 1,
+          "max": null,
+          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false
+        "align": false,
+        "alignLevel": null
       }
     },
     {
@@ -969,14 +976,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "xTj2X4Q4k"
-      },
+      "datasource": "${DS_PROMETHEUS}",
       "editable": true,
       "error": false,
       "fill": 1,
-      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -984,7 +987,6 @@
         "x": 8,
         "y": 10
       },
-      "hiddenSeries": false,
       "id": 5,
       "isNew": true,
       "legend": {
@@ -1000,11 +1002,7 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
       "percentage": false,
-      "pluginVersion": "9.3.0-beta1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1014,10 +1012,6 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "xTj2X4Q4k"
-          },
           "expr": "sum without(instance)(rate(kafka_server_brokertopicmetrics_bytesin_total{job=\"kafka\",topic!=\"\"}[5m]))",
           "intervalFactor": 2,
           "legendFormat": "{{topic}}",
@@ -1027,7 +1021,8 @@
         }
       ],
       "thresholds": [],
-      "timeRegions": [],
+      "timeFrom": null,
+      "timeShift": null,
       "title": "Bytes In Per Topic",
       "tooltip": {
         "msResolution": false,
@@ -1037,7 +1032,9 @@
       },
       "type": "graph",
       "xaxis": {
+        "buckets": null,
         "mode": "time",
+        "name": null,
         "show": true,
         "values": []
       },
@@ -1046,16 +1043,22 @@
           "format": "Bps",
           "label": "Bytes/s",
           "logBase": 1,
+          "max": null,
+          "min": null,
           "show": true
         },
         {
           "format": "short",
+          "label": null,
           "logBase": 1,
+          "max": null,
+          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false
+        "align": false,
+        "alignLevel": null
       }
     },
     {
@@ -1063,14 +1066,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "xTj2X4Q4k"
-      },
+      "datasource": "${DS_PROMETHEUS}",
       "editable": true,
       "error": false,
       "fill": 1,
-      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -1078,7 +1077,6 @@
         "x": 16,
         "y": 10
       },
-      "hiddenSeries": false,
       "id": 6,
       "isNew": true,
       "legend": {
@@ -1094,11 +1092,7 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
       "percentage": false,
-      "pluginVersion": "9.3.0-beta1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1108,10 +1102,6 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "xTj2X4Q4k"
-          },
           "expr": "sum without(instance)(rate(kafka_server_brokertopicmetrics_bytesout_total{job=\"kafka\",topic!=\"\"}[5m]))",
           "intervalFactor": 2,
           "legendFormat": "{{topic}}",
@@ -1121,7 +1111,8 @@
         }
       ],
       "thresholds": [],
-      "timeRegions": [],
+      "timeFrom": null,
+      "timeShift": null,
       "title": "Bytes Out Per Topic",
       "tooltip": {
         "msResolution": false,
@@ -1131,7 +1122,9 @@
       },
       "type": "graph",
       "xaxis": {
+        "buckets": null,
         "mode": "time",
+        "name": null,
         "show": true,
         "values": []
       },
@@ -1140,16 +1133,22 @@
           "format": "Bps",
           "label": "Bytes/s",
           "logBase": 1,
+          "max": null,
+          "min": null,
           "show": true
         },
         {
           "format": "short",
+          "label": null,
           "logBase": 1,
+          "max": null,
+          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false
+        "align": false,
+        "alignLevel": null
       }
     },
     {
@@ -1157,14 +1156,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "xTj2X4Q4k"
-      },
+      "datasource": "${DS_PROMETHEUS}",
       "editable": true,
       "error": false,
       "fill": 1,
-      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -1172,7 +1167,6 @@
         "x": 0,
         "y": 13
       },
-      "hiddenSeries": false,
       "id": 4,
       "isNew": true,
       "legend": {
@@ -1188,11 +1182,7 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
       "percentage": false,
-      "pluginVersion": "9.3.0-beta1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1202,10 +1192,6 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "xTj2X4Q4k"
-          },
           "expr": "sum without(instance)(rate(kafka_server_brokertopicmetrics_messagesin_total{job=\"kafka\",topic!=\"\"}[5m]))",
           "intervalFactor": 2,
           "legendFormat": "{{topic}}",
@@ -1215,7 +1201,8 @@
         }
       ],
       "thresholds": [],
-      "timeRegions": [],
+      "timeFrom": null,
+      "timeShift": null,
       "title": "Messages In Per Topic",
       "tooltip": {
         "msResolution": false,
@@ -1225,7 +1212,9 @@
       },
       "type": "graph",
       "xaxis": {
+        "buckets": null,
         "mode": "time",
+        "name": null,
         "show": true,
         "values": []
       },
@@ -1234,16 +1223,22 @@
           "format": "short",
           "label": "Messages/s",
           "logBase": 1,
+          "max": null,
+          "min": null,
           "show": true
         },
         {
           "format": "short",
+          "label": null,
           "logBase": 1,
+          "max": null,
+          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false
+        "align": false,
+        "alignLevel": null
       }
     },
     {
@@ -1251,10 +1246,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "xTj2X4Q4k"
-      },
+      "datasource": "${DS_PROMETHEUS}",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -1286,10 +1278,6 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "xTj2X4Q4k"
-          },
           "expr": "sum without(topic)(rate(kafka_server_brokertopicmetrics_bytesout_total{job=\"kafka\",topic!=\"\"}[5m]))",
           "format": "time_series",
           "intervalFactor": 1,
@@ -1298,6 +1286,8 @@
         }
       ],
       "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
       "title": "Bytes Out Per Broker",
       "tooltip": {
         "shared": true,
@@ -1306,24 +1296,33 @@
       },
       "type": "graph",
       "xaxis": {
+        "buckets": null,
         "mode": "time",
+        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
+          "label": null,
           "logBase": 1,
+          "max": null,
+          "min": null,
           "show": true
         },
         {
           "format": "short",
+          "label": null,
           "logBase": 1,
+          "max": null,
+          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false
+        "align": false,
+        "alignLevel": null
       }
     },
     {
@@ -1331,10 +1330,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "xTj2X4Q4k"
-      },
+      "datasource": "${DS_PROMETHEUS}",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -1370,10 +1366,6 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "xTj2X4Q4k"
-          },
           "expr": "sum without(topic)(rate(kafka_server_brokertopicmetrics_bytesin_total{job=\"kafka\",topic!=\"\"}[5m]))",
           "format": "time_series",
           "intervalFactor": 2,
@@ -1384,6 +1376,8 @@
         }
       ],
       "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
       "title": "Bytes In Per Broker",
       "tooltip": {
         "msResolution": false,
@@ -1393,7 +1387,9 @@
       },
       "type": "graph",
       "xaxis": {
+        "buckets": null,
         "mode": "time",
+        "name": null,
         "show": true,
         "values": []
       },
@@ -1402,21 +1398,27 @@
           "format": "Bps",
           "label": "Bytes/s",
           "logBase": 1,
+          "max": null,
+          "min": null,
           "show": true
         },
         {
           "format": "short",
+          "label": null,
           "logBase": 1,
+          "max": null,
+          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false
+        "align": false,
+        "alignLevel": null
       }
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 37,
+  "schemaVersion": 16,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1454,6 +1456,5 @@
   "timezone": "browser",
   "title": "Kafka Overview",
   "uid": "ncGgm4sVk",
-  "version": 2,
-  "weekStart": ""
+  "version": 8
 }
