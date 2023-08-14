@@ -20,6 +20,12 @@ scp -i ~/kafka-security.pem centos@<<KERBEROS-SERVER-PUBLIC-DNS>>:/tmp/zookeeper
 
 scp -i ~/kafka-security.pem /tmp/zookeeper.service.keytab ubuntu@<<KAFKA-SERVER-PUBLIC-DNS>>:/tmp/
 ```
+## Install kr5-user on zookeeper1, 2 and 3
+
+export DEBIAN_FRONTEND=noninteractive && sudo apt-get install -y krb5-user
+sudo nano /etc/krb5.conf
+Use this file [](./krb5.conf)
+
 ### Zookeeper Machine (Grab Zookeeper Ticket)
 
 kinit -kt /home/ubuntu/keytab/zookeeper1.service.keytab zookeeper/<<Kafka-Server-Internal-DNS>>
