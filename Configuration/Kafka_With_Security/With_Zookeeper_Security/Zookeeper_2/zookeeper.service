@@ -1,0 +1,22 @@
+[Unit]
+Description=zookeeper
+Requires=network.target remote-fs.target
+After=network.target remote-fs.target
+
+[Service]
+Type=simple
+# User=ec2-user
+# Group=ec2-user
+Environment="KAFKA_HEAP_OPTS=-Xmx256M -Xms128M"
+Environment="KAFKA_OPTS=-Djava.security.auth.login.config=/home/ubuntu/kafka/config/zookeeper_jaas.conf -javaagent:/home/ubuntu/prometheus/jmx_prometheus_javaagent-0.3.1.jar=8080:/home/ubuntu/prometheus/zookeeper.yml"
+ExecStart=/home/ubuntu/kafka/bin/zookeeper-server-start.sh /home/ubuntu/kafka/config/zookeeper.properties
+ExecStop=/home/ubuntu/kafka/bin/zookeeper-server-stop.sh
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
+
+
+# This file use to run zookeeper with systemctl start zookeeper
+# path of this file is /etc/systemd/system
+# Then command systemctl daemon-reload
