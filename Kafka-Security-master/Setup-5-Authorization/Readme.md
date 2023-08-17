@@ -92,3 +92,19 @@ kinit -kt /tmp/reader.user.keytab reader
 --topic acl-test \
 --producer.config /tmp/kafka_client_kerberos.properties
 ```
+
+# If Create Acls not working then follow this
+
+# Go to kafka machine
+export KAFKA_OPTS=-Djava.security.auth.login.config=/home/ubuntu/kafka/config/kafka_server_jaas.conf
+
+# Then use create Acls commands
+
+# Reader Permission
+kafka/bin/kafka-acls.sh --authorizer-properties zookeeper.connect=ec2-13-126-138-37.ap-south-1.compute.amazonaws.com:2181 --add --allow-principal User:reader --allow-principal User:writer --operation Read --group=* --topic my-topic
+
+# Writer Permission
+kafka/bin/kafka-acls.sh --authorizer-properties zookeeper.connect=ec2-13-126-138-37.ap-south-1.compute.amazonaws.com:2181 --add --allow-principal User:writer --operation Write --topic my-topic
+
+# List Permissions
+kafka/bin/kafka-acls.sh --authorizer-properties zookeeper.connect=ec2-13-126-138-37.ap-south-1.compute.amazonaws.com:2181 --list --topic my-topic
