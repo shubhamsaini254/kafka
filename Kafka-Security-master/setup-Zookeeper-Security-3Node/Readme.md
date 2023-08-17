@@ -166,7 +166,6 @@ add the following to /etc/systemd/system/zookeeper.service KAFKA_OPTS property:
 export KAFKA_OPTS=-Djava.security.auth.login.config=/home/ubuntu/kafka/config/kafka_server_jaas.conf
 ~/kafka/bin/zookeeper-shell.sh <<KAFKA-SERVER-EXTERNAL-DNS>>:2181
 
-
 addauth digest super:superpw
 getAcl /config/topics/secured-topic
 setAcl /config/topics/secured-topic world:anyone:r,sasl:zookeeper:cdrwa
@@ -180,3 +179,6 @@ export KAFKA_OPTS=-Djava.security.auth.login.config=/home/ubuntu/kafka/config/ka
 ~/kafka/bin/zookeeper-security-migration.sh --zookeeper.connect <<KAFKA-SERVER-EXTERNAL-DNS>>:2181 --zookeeper.acl secure
 ~/kafka/bin/zookeeper-shell.sh <<KAFKA-SERVER-EXTERNAL-DNS>>:2181 getAcl /config/topics/kafka-security-topic
 ```
+# For unsecure the all znodes
+
+~/kafka/bin/zookeeper-security-migration.sh --zookeeper.connect ip-172-31-36-152.ap-south-1.compute.internal:2181 --zookeeper.acl unsecure
