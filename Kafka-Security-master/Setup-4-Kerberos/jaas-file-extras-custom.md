@@ -32,3 +32,4 @@ Or using the config as seen above:
 
 security.protocol=SASL_SSL
 sasl.jaas.config=com.sun.security.auth.module.Krb5LoginModule required useKeyTab=true storeKey=true keyTab="/tmp/reader.user.keytab" principal="reader@KAFKA.SECURE";
+

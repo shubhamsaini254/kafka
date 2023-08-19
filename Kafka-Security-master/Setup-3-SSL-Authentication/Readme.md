@@ -26,9 +26,10 @@ scp -i ~/kafka-security.pem client-cert-sign-request ubuntu@ec2-18-196-169-2.eu-
 ```
 cd ~/ssl
 export SRVPASS=serversecret
-openssl x509 -req -CA ca-cert -CAkey ca-key -in /tmp/client-cert-sign-request -out /tmp/client-cert-signed -days 365 -CAcreateserial -passin pass:$SRVPASS
+openssl x509 -req -CA ca-cert -CAkey ca-key -in client-cert-sign-request -out client-cert-signed -days 365 -CAcreateserial -passin pass:$SRVPASS
 #> ll
 ```
+keytool -printcert -v -file client-cert-signed 
 
 # switch back to local computer
 ## copy the signed certificate from EC2 instance to local computer and import to keystore
