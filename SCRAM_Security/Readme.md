@@ -7,4 +7,4 @@ Using a hash function, the secret information (i.e. the password), in addition t
 Though SCRAM provides additional security against eavesdropping, it is recommended to use SCRAM over a secure communications channel (i.e. TLS).
 
 ### About This Directory
-This Directory contains SCRAM Security in Apache Kafka
+This Directory contains SCRAM Security in Apache Kafka. We use SCRAM for Authentication Machanism for clients to server.
