@@ -1,0 +1,11 @@
+[Unit]
+Description=kafka-connect
+After=network.target
+
+[Service]
+Environment="KAFKA_HEAP_OPTS=-Xmx256M -Xms128M"
+ExecStart=/home/ubuntu/kafka/bin/connect-distributed.sh /home/ubuntu/kafka/config/connect-distributed.properties 
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
